@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Care Team &amp; Nephrologists | Dialysis Center</title>
+  <meta name="description" content="Meet the board-certified nephrologists, certified nephrology nurses, vascular coordinators, and renal dietitians at Dialysis Center.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-navbar">
+    <div class="container h-100 d-flex align-items-center justify-content-between gap-3">
+      <a href="index.html" class="navbar-brand-wrap">
+        <span class="brand-mark"><i class="bi bi-droplet-half"></i></span>
+        <span><span class="brand-title d-block">Dialysis Center</span><span class="brand-subtitle">Renal Healthcare</span></span>
+      </a>
+      <nav class="d-none d-lg-block" aria-label="Primary Navigation">
+        <ul class="nav-links-desktop">
+          <li><a href="index.html" class="nav-item-link">Home</a></li>
+          <li><a href="home2.html" class="nav-item-link">Home 2</a></li>
+          <li><a href="about.html" class="nav-item-link">About</a></li>
+          <li><a href="services.html" class="nav-item-link">Services</a></li>
+          <li><a href="care-team.html" class="nav-item-link active">Care Team</a></li>
+          <li><a href="pricing.html" class="nav-item-link">Coverage</a></li>
+          <li><a href="contact.html" class="nav-item-link">Contact</a></li>
+          <li><a href="patient-dashboard.html" class="nav-item-link">Patient Portal</a></li>
+        </ul>
+      </nav>
+      <div class="d-flex align-items-center gap-2">
+        <button type="button" class="icon-btn theme-toggle" aria-label="Toggle color theme"><i class="bi bi-moon-stars-fill"></i></button>
+        <button type="button" class="icon-btn rtl-toggle d-none d-sm-inline-flex" aria-label="Toggle RTL"><i class="bi bi-arrow-left-right"></i></button>
+        <a href="login.html" class="btn-medical btn-medical-primary d-none d-md-inline-flex"><i class="bi bi-person-circle"></i> Login</a>
+        <button type="button" class="icon-btn nav-toggle d-lg-none" aria-label="Open menu"><i class="bi bi-list fs-4"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile Navigation">
+    <div class="d-flex align-items-center justify-content-between pb-3 border-bottom">
+      <a href="index.html" class="navbar-brand-wrap"><span class="brand-mark"><i class="bi bi-droplet-half"></i></span><span class="brand-title">Dialysis Center</span></a>
+      <button type="button" class="icon-btn drawer-close" aria-label="Close menu"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <nav class="drawer-nav-list">
+      <a href="index.html"><i class="bi bi-house-heart"></i> Home</a>
+      <a href="home2.html"><i class="bi bi-house-add"></i> Home 2</a>
+      <a href="about.html"><i class="bi bi-hospital"></i> About Us</a>
+      <a href="services.html"><i class="bi bi-heart-pulse"></i> Dialysis Services</a>
+      <a href="care-team.html" class="active"><i class="bi bi-people"></i> Care Team</a>
+      <a href="first-time-guide.html"><i class="bi bi-journal-medical"></i> First-Time Guide</a>
+      <a href="pricing.html"><i class="bi bi-shield-check"></i> Insurance &amp; Coverage</a>
+      <a href="blog.html"><i class="bi bi-newspaper"></i> Renal Health Blog</a>
+      <a href="contact.html"><i class="bi bi-telephone"></i> Contact</a>
+      <a href="patient-dashboard.html"><i class="bi bi-speedometer2"></i> Patient Dashboard</a>
+    </nav>
+    <div class="mt-auto pt-3 border-top d-grid gap-2">
+      <a href="login.html" class="btn-medical btn-medical-primary w-100">Patient Login</a>
+      <a href="register.html" class="btn-medical btn-medical-outline w-100">Register Account</a>
+    </div>
+  </aside>
+
+  <main id="main-content">
+    <section class="page-banner">
+      <div class="container">
+        <span class="section-eyebrow"><i class="bi bi-people-fill"></i> Clinical Specialists</span>
+        <h1 class="mb-3">Our Multidisciplinary Care Team</h1>
+        <p class="lead mb-0" style="max-width: 700px;">
+          Every patient is supported by a dedicated nephrologist, certified nephrology nurse, renal dietitian, and social worker working together.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-pad">
+      <div class="container">
+        <!-- Filter Buttons -->
+        <div class="d-flex flex-wrap gap-2 mb-5">
+          <button type="button" class="btn-medical btn-medical-primary active" data-team-filter="all">All Specialists</button>
+          <button type="button" class="btn-medical btn-medical-outline" data-team-filter="nephrologist">Nephrologists</button>
+          <button type="button" class="btn-medical btn-medical-outline" data-team-filter="nursing">Dialysis Nursing</button>
+          <button type="button" class="btn-medical btn-medical-outline" data-team-filter="support">Nutrition &amp; Care Support</button>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4 reveal" data-team-role="nephrologist">
+            <article class="medical-card">
+              <div class="team-img-wrap">
+                <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=800&q=80" alt="Dr. Marcus Vance, MD">
+              </div>
+              <span class="section-eyebrow">Nephrology</span>
+              <h4 class="mb-1">Dr. Marcus Vance, MD, FASN</h4>
+              <p class="small fw-semibold mb-2" style="color: var(--brand-teal);">Medical Director &amp; Chief Nephrologist</p>
+              <p class="small mb-3">Board-certified in Internal Medicine &amp; Nephrology. Leads clinical quality protocols, Kt/V optimization, and transplant referrals.</p>
+              <a href="patient-dashboard.html#schedule" class="small fw-semibold">Book Consultation <i class="bi bi-arrow-right"></i></a>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4 reveal" data-team-role="nephrologist">
+            <article class="medical-card">
+              <div class="team-img-wrap">
+                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80" alt="Dr. Elena Rostova, MD">
+              </div>
+              <span class="section-eyebrow">Home Dialysis</span>
+              <h4 class="mb-1">Dr. Elena Rostova, MD</h4>
+              <p class="small fw-semibold mb-2" style="color: var(--brand-teal);">Director of Peritoneal &amp; Home Therapies</p>
+              <p class="small mb-3">Specializes in automated peritoneal dialysis, nocturnal hemodialysis, and preserving residual kidney function.</p>
+              <a href="patient-dashboard.html#schedule" class="small fw-semibold">Book Consultation <i class="bi bi-arrow-right"></i></a>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4 reveal" data-team-role="nephrologist">
+            <article class="medical-card">
+              <div class="team-img-wrap">
+                <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=800&q=80" alt="Dr. Samuel Okafor, MD">
+              </div>
+              <span class="section-eyebrow">Vascular Access</span>
+              <h4 class="mb-1">Dr. Samuel Okafor, MD</h4>
+              <p class="small fw-semibold mb-2" style="color: var(--brand-teal);">Interventional Nephrologist</p>
+              <p class="small mb-3">Oversees AV fistula maturation, Doppler ultrasound diagnostics, and minimally invasive access maintenance.</p>
+              <a href="contact.html" class="small fw-semibold">Request Referral <i class="bi bi-arrow-right"></i></a>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4 reveal" data-team-role="nursing">
+            <article class="medical-card">
+              <div class="team-img-wrap">
+                <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80" alt="Hannah Brooks, BSN, CNN">
+              </div>
+              <span class="section-eyebrow">Nursing Leadership</span>
+              <h4 class="mb-1">Hannah Brooks, BSN, CNN</h4>
+              <p class="small fw-semibold mb-2" style="color: var(--brand-teal);">Charge Dialysis Nurse</p>
+              <p class="small mb-3">14 years in acute and chronic hemodialysis. Certified Nephrology Nurse overseeing daily chair safety and cannulation training.</p>
+              <a href="contact.html" class="small fw-semibold">Contact Nursing Desk <i class="bi bi-arrow-right"></i></a>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4 reveal" data-team-role="support">
+            <article class="medical-card">
+              <div class="team-img-wrap">
+                <img src="assets/images/dietitian-renal.jpg" alt="Claire Lin, MS, RD, CSR">
+              </div>
+              <span class="section-eyebrow">Renal Nutrition</span>
+              <h4 class="mb-1">Claire Lin, MS, RD, CSR</h4>
+              <p class="small fw-semibold mb-2" style="color: var(--brand-teal);">Board-Certified Renal Dietitian</p>
+              <p class="small mb-3">Board-Certified Specialist in Renal Nutrition helping patients manage potassium, phosphorus, protein, and fluid goals.</p>
+              <a href="patient-dashboard.html#schedule" class="small fw-semibold">Schedule Nutrition Review <i class="bi bi-arrow-right"></i></a>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4 reveal" data-team-role="support">
+            <article class="medical-card">
+              <div class="team-img-wrap">
+                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80" alt="David Alvarez, MSW, LCSW">
+              </div>
+              <span class="section-eyebrow">Patient Support</span>
+              <h4 class="mb-1">David Alvarez, MSW, LCSW</h4>
+              <p class="small fw-semibold mb-2" style="color: var(--brand-teal);">Renal Social Worker &amp; Insurance Navigator</p>
+              <p class="small mb-3">Assists with Medicare ESRD enrollment, transportation scheduling, vocational support, and emotional wellness.</p>
+              <a href="contact.html" class="small fw-semibold">Connect with Support <i class="bi bi-arrow-right"></i></a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Staffing Standards & Care Ratios -->
+    <section class="section-pad bg-clinical-alt">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="section-eyebrow"><i class="bi bi-shield-check"></i> Care Standards</span>
+          <h2 class="mb-2">Why Our Care Team Makes the Difference</h2>
+          <p class="mb-0 mx-auto" style="max-width: 640px;">We invest in lower patient-to-nurse ratios and continuous nephrology education so you never feel rushed.</p>
+        </div>
+        <div class="row g-4 align-items-stretch">
+          <div class="col-md-4 reveal">
+            <div class="medical-card d-flex flex-column h-100">
+              <div class="icon-box-lg"><i class="bi bi-person-hearts"></i></div>
+              <h4 class="h5 mb-2">1:3 Nurse-to-Patient Ratio</h4>
+              <p class="small mb-0 mt-auto">Dedicated Certified Nephrology Nurses (CNN) stay attentive to your comfort, vitals, and fistula care every session.</p>
+            </div>
+          </div>
+          <div class="col-md-4 reveal">
+            <div class="medical-card d-flex flex-column h-100">
+              <div class="icon-box-lg icon-box-teal"><i class="bi bi-stethoscope"></i></div>
+              <h4 class="h5 mb-2">Weekly Physician Rounds</h4>
+              <p class="small mb-0 mt-auto">Board-certified nephrologists round in-person each week to fine-tune dry weight, medications, and lab targets.</p>
+            </div>
+          </div>
+          <div class="col-md-4 reveal">
+            <div class="medical-card d-flex flex-column h-100">
+              <div class="icon-box-lg"><i class="bi bi-telephone-plus"></i></div>
+              <h4 class="h5 mb-2">24/7 Clinical Triage</h4>
+              <p class="small mb-0 mt-auto">Direct after-hours phone access to an on-call renal nurse and nephrologist whenever questions arise.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Monthly Multidisciplinary Care Conference -->
+    <section class="section-pad">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6 reveal">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80" alt="Multidisciplinary renal care conference" class="rounded-4 shadow-lg w-100" style="height: 360px; object-fit: cover;">
+          </div>
+          <div class="col-lg-6 reveal">
+            <span class="section-eyebrow"><i class="bi bi-diagram-3"></i> Coordinated Care</span>
+            <h2 class="mb-3">Monthly Care Plan Reviews Around You</h2>
+            <p class="mb-4">Every month, your nephrologist, charge nurse, dietitian, and social worker meet to review your Kt/V adequacy, vascular access flow, and personal wellness goals—sharing clear summaries directly in your Patient Portal.</p>
+            <a href="patient-dashboard.html#records" class="btn-medical btn-medical-primary">View Sample Care Plan in Portal</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Consultation CTA -->
+    <section class="section-pad bg-clinical-alt">
+      <div class="container">
+        <div class="stat-card-highlight p-4 p-md-5">
+          <div class="row align-items-center g-4">
+            <div class="col-lg-8">
+              <h2 class="mb-2">Ready to Meet Your Renal Care Team?</h2>
+              <p class="mb-0 opacity-90">Schedule a consultation with Dr. Vance, Dr. Rostova, or our renal nutrition specialists.</p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+              <a href="contact.html" class="btn btn-light btn-lg fw-semibold">Request Appointment</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <a href="index.html" class="navbar-brand-wrap mb-3">
+            <span class="brand-mark"><i class="bi bi-droplet-half"></i></span>
+            <span><span class="brand-title d-block">Dialysis Center</span><span class="brand-subtitle">Renal Healthcare</span></span>
+          </a>
+          <p class="small mb-0">Compassionate, accredited renal replacement therapy and patient-centered kidney care.</p>
+        </div>
+        <div class="col-6 col-lg-2">
+          <h6 class="fw-bold mb-3">Center</h6>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="care-team.html">Care Team</a></li>
+            <li><a href="pricing.html">Coverage</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-3">
+          <h6 class="fw-bold mb-3">Patient Resources</h6>
+          <ul class="footer-links">
+            <li><a href="patient-dashboard.html">Patient Dashboard</a></li>
+            <li><a href="first-time-guide.html">First-Time Guide</a></li>
+            <li><a href="blog.html">Renal Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3">
+          <h6 class="fw-bold mb-3">Account</h6>
+          <ul class="footer-links">
+            <li><a href="login.html">Patient Login</a></li>
+            <li><a href="register.html">Register</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom d-flex justify-content-between flex-wrap gap-2">
+        <span>&copy; 2026 Dialysis Center. All rights reserved.</span>
+        <span>HIPAA-Compliant Renal Care</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Dashboard | Dialysis Center</title>
+  <meta name="description" content="Patient portal for scheduling dialysis sessions, reviewing treatment history, accessing lab records, managing billing, and updating patient profiles.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+
+<body>
+  <div class="dashboard-shell">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar" id="dashboardSidebar" aria-label="Patient Portal Sidebar">
+      <div class="d-flex align-items-center justify-content-between pb-3 border-bottom">
+        <a href="index.html" class="navbar-brand-wrap">
+          <span class="brand-mark"><i class="bi bi-droplet-half"></i></span>
+          <span>
+            <span class="brand-title d-block">Dialysis Center</span>
+            <span class="brand-subtitle">Patient Portal</span>
+          </span>
+        </a>
+      </div>
+
+      <nav class="dash-nav-list">
+        <button type="button" class="dash-nav-link active" data-view="overview">
+          <i class="bi bi-grid-1x2-fill"></i> Overview
+        </button>
+        <button type="button" class="dash-nav-link" data-view="schedule">
+          <i class="bi bi-calendar2-plus-fill"></i> Schedule &amp; Appointments
+        </button>
+        <button type="button" class="dash-nav-link" data-view="history">
+          <i class="bi bi-clock-history"></i> Session History
+        </button>
+        <button type="button" class="dash-nav-link" data-view="records">
+          <i class="bi bi-file-earmark-medical-fill"></i> Treatment &amp; Lab Records
+        </button>
+        <button type="button" class="dash-nav-link" data-view="billing">
+          <i class="bi bi-receipt-cutoff"></i> Billing &amp; Insurance
+        </button>
+        <button type="button" class="dash-nav-link" data-view="notifications">
+          <i class="bi bi-bell-fill"></i> Notifications
+          <span class="badge bg-danger rounded-pill ms-auto" id="notifCountBadge">3</span>
+        </button>
+        <button type="button" class="dash-nav-link" data-view="profile">
+          <i class="bi bi-person-gear"></i> Patient Profile
+        </button>
+      </nav>
+
+      <div class="pt-3 border-top d-grid gap-2">
+        <a href="index.html" class="btn-medical btn-medical-outline btn-sm w-100">
+          <i class="bi bi-arrow-left"></i> Back to Clinic Site
+        </a>
+        <a href="login.html" class="btn btn-sm btn-outline-danger w-100">
+          <i class="bi bi-box-arrow-right"></i> Sign Out
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Dashboard Area -->
+    <div class="dashboard-main">
+      <!-- Topbar -->
+      <header class="dashboard-topbar gap-2">
+        <div class="d-flex align-items-center gap-2 gap-sm-3 flex-grow-1" style="min-width: 0;">
+          <button type="button" class="icon-btn d-lg-none flex-shrink-0" id="sidebarToggle" aria-label="Toggle dashboard sidebar">
+            <i class="bi bi-list fs-4"></i>
+          </button>
+          <div style="min-width: 0;">
+            <h1 class="h6 h5-sm mb-0 fw-bold text-truncate" id="dashTitle">Overview</h1>
+            <span class="small text-muted d-none d-sm-inline">Patient ID: DC-48291 • Primary Unit: Main Renal Wing</span>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center gap-2 flex-shrink-0">
+          <button type="button" class="icon-btn theme-toggle" aria-label="Toggle color theme">
+            <i class="bi bi-moon-stars-fill"></i>
+          </button>
+          <button type="button" class="icon-btn rtl-toggle" aria-label="Toggle RTL layout" title="Toggle RTL">
+            <i class="bi bi-arrow-left-right"></i>
+          </button>
+          <div class="d-flex align-items-center gap-2 ps-2 border-start">
+            <span class="rounded-circle d-inline-flex align-items-center justify-content-center fw-bold text-white flex-shrink-0" style="width: 36px; height: 36px; background: var(--gradient-primary);">RJ</span>
+            <div class="d-none d-md-block lh-sm">
+              <strong class="small d-block">Robert Jenkins</strong>
+              <span class="text-muted" style="font-size: 0.75rem;">AV Fistula • Mon/Wed/Fri</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Views Container -->
+      <main class="dashboard-content">
+
+        <!-- 1. OVERVIEW VIEW -->
+        <section class="dash-view is-active" id="view-overview" data-title="Overview">
+          <div class="row g-4 mb-4">
+            <div class="col-sm-6 col-xl-3">
+              <div class="dash-stat-card">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="small fw-semibold text-muted">Next Dialysis Session</span>
+                  <span class="icon-btn" style="width: 34px; height: 34px; background: var(--brand-blue-light); color: var(--brand-blue); border: none;"><i class="bi bi-calendar-event"></i></span>
+                </div>
+                <h3 class="h4 mb-1">Mon, Nov 16</h3>
+                <p class="small mb-0" style="color: var(--brand-teal); font-weight: 600;">06:30 AM • Chair 12 (Main)</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <div class="dash-stat-card">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="small fw-semibold text-muted">Latest Kt/V Adequacy</span>
+                  <span class="icon-btn" style="width: 34px; height: 34px; background: var(--brand-teal-light); color: var(--brand-teal); border: none;"><i class="bi bi-activity"></i></span>
+                </div>
+                <h3 class="h4 mb-1">1.62</h3>
+                <p class="small mb-0 text-success fw-semibold"><i class="bi bi-check-circle-fill"></i> Above target (&ge; 1.20)</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <div class="dash-stat-card">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="small fw-semibold text-muted">Target Dry Weight</span>
+                  <span class="icon-btn" style="width: 34px; height: 34px; background: var(--brand-blue-light); color: var(--brand-blue); border: none;"><i class="bi bi-speedometer2"></i></span>
+                </div>
+                <h3 class="h4 mb-1">71.5 kg</h3>
+                <p class="small mb-0 text-muted">Last Post-Weight: 71.7 kg</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <div class="dash-stat-card">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <span class="small fw-semibold text-muted">Current Balance</span>
+                  <span class="icon-btn" style="width: 34px; height: 34px; background: var(--status-success-bg); color: var(--status-success); border: none;"><i class="bi bi-shield-check"></i></span>
+                </div>
+                <h3 class="h4 mb-1">$0.00</h3>
+                <p class="small mb-0 text-muted">Medicare ESRD + PPO Active</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-lg-8">
+              <div class="dash-panel h-100">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                  <div>
+                    <h2 class="h5 mb-1">Monthly Dialysis Adequacy (Kt/V) &amp; Fluid Removal</h2>
+                    <p class="small mb-0">Last 6 completed hemodialysis sessions</p>
+                  </div>
+                  <a href="#history" data-jump-view="history" class="btn-medical btn-medical-outline btn-sm">Full History</a>
+                </div>
+
+                <!-- Clean Accessible Bar Visualization -->
+                <div class="row g-3 align-items-end text-center pt-3 pb-2 border-bottom" style="min-height: 210px;">
+                  <div class="col">
+                    <div class="mx-auto rounded-top" style="width: 34px; height: 132px; background: var(--brand-blue);" title="Kt/V 1.54"></div>
+                    <span class="d-block small fw-bold mt-2">1.54</span>
+                    <span class="d-block text-muted" style="font-size: 0.75rem;">Nov 02</span>
+                  </div>
+                  <div class="col">
+                    <div class="mx-auto rounded-top" style="width: 34px; height: 144px; background: var(--brand-teal);" title="Kt/V 1.58"></div>
+                    <span class="d-block small fw-bold mt-2">1.58</span>
+                    <span class="d-block text-muted" style="font-size: 0.75rem;">Nov 04</span>
+                  </div>
+                  <div class="col">
+                    <div class="mx-auto rounded-top" style="width: 34px; height: 140px; background: var(--brand-blue);" title="Kt/V 1.56"></div>
+                    <span class="d-block small fw-bold mt-2">1.56</span>
+                    <span class="d-block text-muted" style="font-size: 0.75rem;">Nov 06</span>
+                  </div>
+                  <div class="col">
+                    <div class="mx-auto rounded-top" style="width: 34px; height: 152px; background: var(--brand-teal);" title="Kt/V 1.60"></div>
+                    <span class="d-block small fw-bold mt-2">1.60</span>
+                    <span class="d-block text-muted" style="font-size: 0.75rem;">Nov 09</span>
+                  </div>
+                  <div class="col">
+                    <div class="mx-auto rounded-top" style="width: 34px; height: 148px; background: var(--brand-blue);" title="Kt/V 1.59"></div>
+                    <span class="d-block small fw-bold mt-2">1.59</span>
+                    <span class="d-block text-muted" style="font-size: 0.75rem;">Nov 11</span>
+                  </div>
+                  <div class="col">
+                    <div class="mx-auto rounded-top" style="width: 34px; height: 160px; background: var(--brand-teal);" title="Kt/V 1.62"></div>
+                    <span class="d-block small fw-bold mt-2">1.62</span>
+                    <span class="d-block text-muted" style="font-size: 0.75rem;">Nov 13</span>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center pt-3 small text-muted">
+                  <span>Clinical Target: &ge; 1.20 Kt/V per session</span>
+                  <span>Avg. Ultrafiltration: 2.1 L / session</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="dash-panel h-100">
+                <h2 class="h5 mb-3">Quick Actions &amp; Care Team</h2>
+                <div class="d-grid gap-2 mb-4">
+                  <button type="button" class="btn-medical btn-medical-primary w-100" data-jump-view="schedule">
+                    <i class="bi bi-calendar-plus"></i> Schedule New Session
+                  </button>
+                  <button type="button" class="btn-medical btn-medical-outline w-100" data-jump-view="records">
+                    <i class="bi bi-download"></i> View Monthly Lab Panel
+                  </button>
+                </div>
+                <div class="p-3 rounded-3 border" style="background: var(--bg-secondary);">
+                  <span class="small text-uppercase fw-bold" style="color: var(--brand-teal);">Assigned Nephrologist</span>
+                  <h4 class="h6 mt-1 mb-1">Dr. Marcus Vance, MD</h4>
+                  <p class="small mb-2">Next clinic round: Wednesday, Nov 18</p>
+                  <a href="contact.html" class="small fw-semibold">Message Care Coordinator <i class="bi bi-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. SCHEDULE & APPOINTMENTS VIEW -->
+        <section class="dash-view" id="view-schedule" data-title="Schedule & Appointments">
+          <div class="row g-4">
+            <div class="col-lg-5">
+              <div class="dash-panel">
+                <h2 class="h5 mb-3">Book a Dialysis Session</h2>
+                <div class="alert alert-success d-none" id="scheduleSuccessAlert" role="alert">
+                  <i class="bi bi-check-circle-fill me-2"></i> Session scheduled and added to your upcoming appointments.
+                </div>
+                <form id="scheduleSessionForm">
+                  <div class="mb-3">
+                    <label for="sessionDate" class="form-label">Preferred Date</label>
+                    <input type="date" id="sessionDate" class="form-control" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="sessionShift" class="form-label">Preferred Shift</label>
+                    <select id="sessionShift" class="form-select" required>
+                      <option value="06:30 AM (Morning)">06:30 AM – 10:30 AM (Morning)</option>
+                      <option value="11:30 AM (Midday)">11:30 AM – 03:30 PM (Midday)</option>
+                      <option value="04:30 PM (Afternoon)">04:30 PM – 08:30 PM (Afternoon)</option>
+                      <option value="09:00 PM (Nocturnal)">09:00 PM – 05:00 AM (Nocturnal)</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="sessionType" class="form-label">Treatment Modality</label>
+                    <select id="sessionType" class="form-select" required>
+                      <option value="In-Center Hemodialysis">In-Center Hemodialysis</option>
+                      <option value="Nocturnal Hemodialysis">Nocturnal Hemodialysis</option>
+                      <option value="PD Monthly Clinic Check">PD Monthly Clinic Check</option>
+                      <option value="Vascular Access Ultrasound">Vascular Access Ultrasound</option>
+                    </select>
+                  </div>
+                  <div class="mb-4">
+                    <label for="sessionUnit" class="form-label">Clinic Location</label>
+                    <select id="sessionUnit" class="form-select" required>
+                      <option value="Main Renal Wing">Main Renal Wing (Downtown)</option>
+                      <option value="Westside Dialysis Suite">Westside Dialysis Suite</option>
+                    </select>
+                  </div>
+                  <button type="submit" class="btn-medical btn-medical-primary w-100">
+                    <i class="bi bi-calendar-check"></i> Confirm Session Request
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <div class="col-lg-7">
+              <div class="dash-panel">
+                <h2 class="h5 mb-3">Upcoming Appointments</h2>
+                <div class="table-responsive">
+                  <table class="table table-medical">
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Shift</th>
+                        <th>Modality</th>
+                        <th>Unit</th>
+                        <th>Physician</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="upcomingSessionsBody">
+                      <tr>
+                        <td class="fw-semibold">2026-11-16</td>
+                        <td>06:30 AM (Morning)</td>
+                        <td>In-Center Hemodialysis</td>
+                        <td>Main Renal Wing</td>
+                        <td>Dr. Marcus Vance</td>
+                        <td><span class="status-pill scheduled"><i class="bi bi-calendar-check"></i> Scheduled</span></td>
+                        <td><button type="button" class="btn btn-sm btn-outline-danger cancel-appt-btn">Cancel</button></td>
+                      </tr>
+                      <tr>
+                        <td class="fw-semibold">2026-11-18</td>
+                        <td>06:30 AM (Morning)</td>
+                        <td>In-Center Hemodialysis</td>
+                        <td>Main Renal Wing</td>
+                        <td>Dr. Marcus Vance</td>
+                        <td><span class="status-pill scheduled"><i class="bi bi-calendar-check"></i> Scheduled</span></td>
+                        <td><button type="button" class="btn btn-sm btn-outline-danger cancel-appt-btn">Cancel</button></td>
+                      </tr>
+                      <tr>
+                        <td class="fw-semibold">2026-11-20</td>
+                        <td>06:30 AM (Morning)</td>
+                        <td>In-Center Hemodialysis</td>
+                        <td>Main Renal Wing</td>
+                        <td>Dr. Marcus Vance</td>
+                        <td><span class="status-pill scheduled"><i class="bi bi-calendar-check"></i> Scheduled</span></td>
+                        <td><button type="button" class="btn btn-sm btn-outline-danger cancel-appt-btn">Cancel</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. SESSION HISTORY VIEW -->
+        <section class="dash-view" id="view-history" data-title="Session History">
+          <div class="dash-panel">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+              <div>
+                <h2 class="h5 mb-1">Dialysis Session History</h2>
+                <p class="small mb-0">Verified vital signs, ultrafiltration volumes, and adequacy scores.</p>
+              </div>
+              <select id="historyFilter" class="form-select" style="max-width: 240px;" aria-label="Filter session history">
+                <option value="all">All Modalities</option>
+                <option value="hemo">In-Center Hemodialysis</option>
+                <option value="nocturnal">Nocturnal Hemodialysis</option>
+              </select>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-medical">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Modality</th>
+                    <th>Duration</th>
+                    <th>Pre / Post Weight</th>
+                    <th>UF Removed</th>
+                    <th>Avg BP</th>
+                    <th>Kt/V</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="historyTableBody">
+                  <tr data-modality="hemo">
+                    <td class="fw-semibold">Nov 13, 2026</td>
+                    <td>In-Center Hemodialysis</td>
+                    <td>4h 00m</td>
+                    <td>73.8 kg / 71.7 kg</td>
+                    <td>2.1 L</td>
+                    <td>128 / 78 mmHg</td>
+                    <td class="fw-bold text-success">1.62</td>
+                    <td><span class="status-pill completed"><i class="bi bi-check-circle"></i> Completed</span></td>
+                  </tr>
+                  <tr data-modality="hemo">
+                    <td class="fw-semibold">Nov 11, 2026</td>
+                    <td>In-Center Hemodialysis</td>
+                    <td>4h 00m</td>
+                    <td>73.5 kg / 71.5 kg</td>
+                    <td>2.0 L</td>
+                    <td>130 / 80 mmHg</td>
+                    <td class="fw-bold text-success">1.59</td>
+                    <td><span class="status-pill completed"><i class="bi bi-check-circle"></i> Completed</span></td>
+                  </tr>
+                  <tr data-modality="hemo">
+                    <td class="fw-semibold">Nov 09, 2026</td>
+                    <td>In-Center Hemodialysis</td>
+                    <td>4h 00m</td>
+                    <td>74.0 kg / 71.6 kg</td>
+                    <td>2.4 L</td>
+                    <td>126 / 76 mmHg</td>
+                    <td class="fw-bold text-success">1.60</td>
+                    <td><span class="status-pill completed"><i class="bi bi-check-circle"></i> Completed</span></td>
+                  </tr>
+                  <tr data-modality="nocturnal">
+                    <td class="fw-semibold">Nov 06, 2026</td>
+                    <td>Nocturnal Hemodialysis</td>
+                    <td>7h 00m</td>
+                    <td>73.6 kg / 71.5 kg</td>
+                    <td>2.1 L</td>
+                    <td>122 / 74 mmHg</td>
+                    <td class="fw-bold text-success">1.88</td>
+                    <td><span class="status-pill completed"><i class="bi bi-check-circle"></i> Completed</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. TREATMENT & LAB RECORDS VIEW -->
+        <section class="dash-view" id="view-records" data-title="Treatment & Lab Records">
+          <div class="row g-4 mb-4">
+            <div class="col-md-6 col-xl-3">
+              <div class="dash-stat-card">
+                <span class="small text-muted fw-semibold">Hemoglobin (Hgb)</span>
+                <h3 class="h4 mt-1 mb-1">11.4 g/dL</h3>
+                <span class="status-pill completed">Target: 10.0–12.0 g/dL</span>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3">
+              <div class="dash-stat-card">
+                <span class="small text-muted fw-semibold">Serum Potassium (K+)</span>
+                <h3 class="h4 mt-1 mb-1">4.6 mEq/L</h3>
+                <span class="status-pill completed">Target: 3.5–5.0 mEq/L</span>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3">
+              <div class="dash-stat-card">
+                <span class="small text-muted fw-semibold">Phosphorus</span>
+                <h3 class="h4 mt-1 mb-1">4.9 mg/dL</h3>
+                <span class="status-pill completed">Target: 3.5–5.5 mg/dL</span>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3">
+              <div class="dash-stat-card">
+                <span class="small text-muted fw-semibold">Serum Albumin</span>
+                <h3 class="h4 mt-1 mb-1">4.1 g/dL</h3>
+                <span class="status-pill completed">Target: &ge; 4.0 g/dL</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-panel">
+            <h2 class="h5 mb-3">Clinical Care Plan &amp; Vascular Access Notes</h2>
+            <p class="mb-3">
+              <strong>Access Type:</strong> Left Radiocephalic AV Fistula (Matured) — Blood Flow Rate (Qb): 420 mL/min, Arterial Pressure: -165 mmHg, Venous Pressure: +180 mmHg. No recirculation detected on Nov 2026 Doppler screening.
+            </p>
+            <p class="mb-0">
+              <strong>Dietary Guidance (Claire Lin, RD):</strong> Continue 70g daily high-biological-value protein and limit sodium to &lt; 2,000 mg/day. Fluid allowance: 1,000 mL/day.
+            </p>
+          </div>
+        </section>
+
+        <!-- 5. BILLING & INSURANCE VIEW -->
+        <section class="dash-view" id="view-billing" data-title="Billing & Insurance">
+          <div class="row g-4">
+            <div class="col-lg-4">
+              <div class="dash-panel h-100">
+                <span class="section-eyebrow">Active Coverage</span>
+                <h2 class="h5 mb-2">Medicare ESRD + BlueCross PPO</h2>
+                <p class="small mb-3">Policy ID: MCR-8841-2901 • Secondary Group: BC-44901</p>
+                <div class="p-3 rounded-3 border" style="background: var(--bg-secondary);">
+                  <div class="d-flex justify-content-between mb-1 small">
+                    <span>Annual Out-of-Pocket Met</span>
+                    <strong>100%</strong>
+                  </div>
+                  <div class="progress" style="height: 8px;">
+                    <div class="progress-bar bg-success" style="width: 100%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-8">
+              <div class="dash-panel">
+                <h2 class="h5 mb-3">Recent Billing Statements</h2>
+                <div class="table-responsive">
+                  <table class="table table-medical">
+                    <thead>
+                      <tr>
+                        <th>Statement ID</th>
+                        <th>Service Period</th>
+                        <th>Billed</th>
+                        <th>Insurance Covered</th>
+                        <th>Patient Due</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="fw-semibold">INV-2026-11</td>
+                        <td>Nov 01 – Nov 15, 2026</td>
+                        <td>$4,850.00</td>
+                        <td>$4,850.00</td>
+                        <td class="fw-bold">$0.00</td>
+                        <td><span class="status-pill completed">Paid by Insurance</span></td>
+                      </tr>
+                      <tr>
+                        <td class="fw-semibold">INV-2026-10</td>
+                        <td>Oct 01 – Oct 31, 2026</td>
+                        <td>$9,620.00</td>
+                        <td>$9,620.00</td>
+                        <td class="fw-bold">$0.00</td>
+                        <td><span class="status-pill completed">Paid by Insurance</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. NOTIFICATIONS VIEW -->
+        <section class="dash-view" id="view-notifications" data-title="Notifications">
+          <div class="dash-panel">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h2 class="h5 mb-0">Clinical &amp; Schedule Notifications</h2>
+              <button type="button" class="btn-medical btn-medical-outline btn-sm" id="markNotificationsRead">
+                Mark All Read
+              </button>
+            </div>
+            <div class="d-grid gap-3">
+              <div class="p-3 rounded-3 border border-primary notif-unread" style="background: var(--bg-secondary);">
+                <div class="d-flex justify-content-between mb-1">
+                  <strong class="small" style="color: var(--brand-blue);"><i class="bi bi-file-medical me-1"></i> Monthly Lab Results Posted</strong>
+                  <span class="small text-muted">2 hours ago</span>
+                </div>
+                <p class="small mb-0">Your November metabolic panel and Kt/V adequacy (1.62) are now available in Treatment &amp; Lab Records.</p>
+              </div>
+              <div class="p-3 rounded-3 border border-primary notif-unread" style="background: var(--bg-secondary);">
+                <div class="d-flex justify-content-between mb-1">
+                  <strong class="small" style="color: var(--brand-teal);"><i class="bi bi-calendar-check me-1"></i> Chair 12 Confirmed for Mon, Nov 16</strong>
+                  <span class="small text-muted">Yesterday</span>
+                </div>
+                <p class="small mb-0">Your 06:30 AM morning hemodialysis shift at Main Renal Wing is confirmed.</p>
+              </div>
+              <div class="p-3 rounded-3 border border-primary notif-unread" style="background: var(--bg-secondary);">
+                <div class="d-flex justify-content-between mb-1">
+                  <strong class="small"><i class="bi bi-shield-check me-1"></i> Insurance Claim Settled</strong>
+                  <span class="small text-muted">3 days ago</span>
+                </div>
+                <p class="small mb-0">Statement INV-2026-10 ($9,620.00) has been fully settled by Medicare ESRD &amp; BlueCross PPO.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. PATIENT PROFILE VIEW -->
+        <section class="dash-view" id="view-profile" data-title="Patient Profile">
+          <div class="dash-panel" style="max-width: 780px;">
+            <h2 class="h5 mb-3">Patient Profile &amp; Clinical Preferences</h2>
+            <div class="alert alert-success d-none" id="profileSaveAlert" role="alert">
+              <i class="bi bi-check-circle-fill me-2"></i> Patient profile updated successfully.
+            </div>
+            <form id="patientProfileForm">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="profName" class="form-label">Full Name</label>
+                  <input type="text" id="profName" class="form-control" value="Robert Jenkins" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="profPhone" class="form-label">Phone Number</label>
+                  <input type="tel" id="profPhone" class="form-control" value="(555) 234-8910" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="profEmail" class="form-label">Email Address</label>
+                  <input type="email" id="profEmail" class="form-control" value="robert.jenkins@example.com" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="profBlood" class="form-label">Blood Type &amp; Access</label>
+                  <input type="text" id="profBlood" class="form-control" value="O+ • Left AV Fistula" readonly>
+                </div>
+                <div class="col-md-6">
+                  <label for="profEmergency" class="form-label">Emergency Contact</label>
+                  <input type="text" id="profEmergency" class="form-control" value="Martha Jenkins (Spouse) - (555) 234-8911" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="profShift" class="form-label">Preferred Shift</label>
+                  <select id="profShift" class="form-select">
+                    <option selected>Morning (06:30 AM)</option>
+                    <option>Midday (11:30 AM)</option>
+                    <option>Afternoon (04:30 PM)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mt-4">
+                <button type="submit" class="btn-medical btn-medical-primary">
+                  <i class="bi bi-save me-1"></i> Save Profile Changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
+
