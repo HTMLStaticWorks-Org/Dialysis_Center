@@ -5,6 +5,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Mobile Sidebar Toggle
   const sidebarToggle = document.getElementById('sidebarToggle');
+  const sidebarClose = document.getElementById('sidebarClose');
   const dashboardSidebar = document.getElementById('dashboardSidebar');
 
   if (sidebarToggle && dashboardSidebar) {
@@ -13,8 +14,14 @@ document.addEventListener('DOMContentLoaded', () => {
       dashboardSidebar.classList.toggle('open');
     });
 
+    if (sidebarClose) {
+      sidebarClose.addEventListener('click', () => {
+        dashboardSidebar.classList.remove('open');
+      });
+    }
+
     document.addEventListener('click', (e) => {
-      if (window.innerWidth < 992 && dashboardSidebar.classList.contains('open')) {
+      if (window.innerWidth < 1200 && dashboardSidebar.classList.contains('open')) {
         if (!dashboardSidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
           dashboardSidebar.classList.remove('open');
         }
@@ -45,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.title = target.dataset.title + ' | Dialysis Center';
     }
 
-    if (dashboardSidebar && window.innerWidth < 992) {
+    if (dashboardSidebar && window.innerWidth < 1200) {
       dashboardSidebar.classList.remove('open');
     }
   };

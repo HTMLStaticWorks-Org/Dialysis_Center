@@ -161,4 +161,35 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // 7. Always-visible Floating Top & Bottom Scroll Controls
+  if (!document.querySelector('.scroll-nav-floating')) {
+    const scrollNav = document.createElement('div');
+    scrollNav.className = 'scroll-nav-floating';
+    scrollNav.setAttribute('aria-label', 'Page scroll navigation');
+
+    const topBtn = document.createElement('button');
+    topBtn.type = 'button';
+    topBtn.className = 'scroll-nav-btn';
+    topBtn.setAttribute('aria-label', 'Scroll to top');
+    topBtn.title = 'Back to Top';
+    topBtn.innerHTML = '<i class="bi bi-arrow-up"></i>';
+    topBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    const bottomBtn = document.createElement('button');
+    bottomBtn.type = 'button';
+    bottomBtn.className = 'scroll-nav-btn';
+    bottomBtn.setAttribute('aria-label', 'Scroll to bottom');
+    bottomBtn.title = 'Go to Bottom';
+    bottomBtn.innerHTML = '<i class="bi bi-arrow-down"></i>';
+    bottomBtn.addEventListener('click', () => {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    });
+
+    scrollNav.appendChild(topBtn);
+    scrollNav.appendChild(bottomBtn);
+    document.body.appendChild(scrollNav);
+  }
 });

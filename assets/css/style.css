@@ -101,6 +101,33 @@
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.25);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
   --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.45);
+  --bs-body-color: #F1F5F9;
+  --bs-secondary-color: #CBD5E1;
+  --bs-border-color: #22324D;
+}
+
+[data-theme="dark"] .text-muted {
+  color: #CBD5E1 !important;
+}
+
+[data-theme="dark"] .accordion-item {
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .accordion-button {
+  color: var(--text-primary);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .accordion-button:not(.collapsed) {
+  color: var(--brand-teal);
+  background-color: transparent;
+  box-shadow: none;
+}
+
+[data-theme="dark"] .accordion-button::after {
+  filter: invert(1) brightness(1.8);
 }
 
 /* Base Reset & Typography */
@@ -571,7 +598,7 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
+  object-position: center 20%;
   transition: transform 0.4s ease;
 }
 .medical-card:hover .team-img-wrap img {
@@ -609,6 +636,21 @@ img {
   border-radius: var(--radius-sm);
   padding: 0.7rem 1rem;
   font-size: 0.95rem;
+}
+
+.form-control::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.85;
+}
+
+[data-theme="dark"] .form-control::placeholder {
+  color: #94A3B8 !important;
+  opacity: 1;
+}
+
+[data-theme="dark"] .form-select option {
+  background-color: var(--surface-card);
+  color: var(--text-primary);
 }
 
 .form-control:focus,
@@ -860,6 +902,67 @@ img {
   color: #94A3B8;
 }
 
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+.footer-social a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #CBD5E1;
+  font-size: 1rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.footer-social a:hover {
+  background: var(--brand-teal);
+  border-color: var(--brand-teal);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Floating Top / Bottom Scroll Controls
+   ========================================================================== */
+.scroll-nav-floating {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 1050;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.scroll-nav-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--surface-card);
+  color: var(--brand-blue);
+  box-shadow: var(--shadow-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.scroll-nav-btn:hover {
+  background: var(--brand-blue);
+  border-color: var(--brand-blue);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
 /* ==========================================================================
    Scroll Reveal Animations
    ========================================================================== */
@@ -883,7 +986,7 @@ img {
   }
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 1199.98px) {
   .dashboard-sidebar {
     transform: translateX(-100%);
   }
